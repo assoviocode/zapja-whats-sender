@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Backoffice.View
+﻿namespace Backoffice.View
 {
     public class LoadingService
     {
@@ -15,6 +9,7 @@ namespace Backoffice.View
         {
             if (loading == null)
                 loading = new Loading();
+
 
             loading.Start();
         }

@@ -27,102 +27,123 @@
     /// </summary>
     private void InitializeComponent()
     {
+        DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EnvioWhatsListForm));
         gbxMessages = new GroupBox();
-        lblCountMessages = new Label();
-        MessageQueueTable = new DataGridView();
-        btnSendMessage = new Button();
-        btnStopMessage = new Button();
+        dgvEnvioWhats = new DataGridView();
+        lblCountEnvioWhats = new Label();
+        btnIniciarEnvio = new Button();
+        btnPararEnvio = new Button();
         gbxMessages.SuspendLayout();
-        ((System.ComponentModel.ISupportInitialize)MessageQueueTable).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)dgvEnvioWhats).BeginInit();
         SuspendLayout();
         // 
         // gbxMessages
         // 
-        gbxMessages.Controls.Add(lblCountMessages);
-        gbxMessages.Controls.Add(MessageQueueTable);
-        gbxMessages.Location = new Point(12, 12);
+        gbxMessages.Controls.Add(dgvEnvioWhats);
+        gbxMessages.Controls.Add(lblCountEnvioWhats);
+        gbxMessages.Location = new Point(14, 16);
+        gbxMessages.Margin = new Padding(3, 4, 3, 4);
         gbxMessages.Name = "gbxMessages";
-        gbxMessages.Size = new Size(999, 473);
+        gbxMessages.Padding = new Padding(3, 4, 3, 4);
+        gbxMessages.Size = new Size(1142, 631);
         gbxMessages.TabIndex = 1;
         gbxMessages.TabStop = false;
         gbxMessages.Text = "Mensagens Na Fila";
-        gbxMessages.Enter += groupBox1_Enter;
         // 
-        // lblCountMessages
+        // dgvEnvioWhats
         // 
-        lblCountMessages.AutoSize = true;
-        lblCountMessages.Location = new Point(18, 446);
-        lblCountMessages.Name = "lblCountMessages";
-        lblCountMessages.Size = new Size(148, 15);
-        lblCountMessages.TabIndex = 2;
-        lblCountMessages.Text = "Quantidade de Registros: 0";
-        lblCountMessages.Click += label1_Click;
+        dgvEnvioWhats.AllowUserToAddRows = false;
+        dgvEnvioWhats.AllowUserToDeleteRows = false;
+        dgvEnvioWhats.AllowUserToResizeRows = false;
+        dgvEnvioWhats.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+        dgvEnvioWhats.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+        dgvEnvioWhats.BackgroundColor = SystemColors.Window;
+        dgvEnvioWhats.ColumnHeadersHeight = 29;
+        dgvEnvioWhats.ImeMode = ImeMode.NoControl;
+        dgvEnvioWhats.Location = new Point(21, 29);
+        dgvEnvioWhats.MultiSelect = false;
+        dgvEnvioWhats.Name = "dgvEnvioWhats";
+        dgvEnvioWhats.ReadOnly = true;
+        dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+        dataGridViewCellStyle1.BackColor = SystemColors.Control;
+        dataGridViewCellStyle1.Font = new Font("Tahoma", 9F);
+        dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+        dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+        dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+        dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+        dgvEnvioWhats.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+        dgvEnvioWhats.RowHeadersWidth = 51;
+        dgvEnvioWhats.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        dgvEnvioWhats.Size = new Size(1101, 551);
+        dgvEnvioWhats.TabIndex = 53;
+        dgvEnvioWhats.TabStop = false;
         // 
-        // MessageQueueTable
+        // lblCountEnvioWhats
         // 
-        MessageQueueTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-        MessageQueueTable.BackgroundColor = SystemColors.Window;
-        MessageQueueTable.GridColor = SystemColors.ControlDark;
-        MessageQueueTable.Location = new Point(18, 22);
-        MessageQueueTable.Margin = new Padding(3, 2, 3, 2);
-        MessageQueueTable.MultiSelect = false;
-        MessageQueueTable.Name = "MessageQueueTable";
-        MessageQueueTable.ReadOnly = true;
-        MessageQueueTable.RowHeadersWidth = 51;
-        MessageQueueTable.Size = new Size(963, 413);
-        MessageQueueTable.TabIndex = 1;
+        lblCountEnvioWhats.AutoSize = true;
+        lblCountEnvioWhats.Location = new Point(21, 595);
+        lblCountEnvioWhats.Name = "lblCountEnvioWhats";
+        lblCountEnvioWhats.Size = new Size(188, 20);
+        lblCountEnvioWhats.TabIndex = 2;
+        lblCountEnvioWhats.Text = "Quantidade de Registros: 0";
         // 
-        // btnSendMessage
+        // btnIniciarEnvio
         // 
-        btnSendMessage.Cursor = Cursors.Hand;
-        btnSendMessage.Image = (Image)resources.GetObject("btnSendMessage.Image");
-        btnSendMessage.Location = new Point(307, 508);
-        btnSendMessage.Name = "btnSendMessage";
-        btnSendMessage.Size = new Size(111, 26);
-        btnSendMessage.TabIndex = 2;
-        btnSendMessage.Text = "Iniciar Envio";
-        btnSendMessage.TextAlign = ContentAlignment.MiddleRight;
-        btnSendMessage.TextImageRelation = TextImageRelation.ImageBeforeText;
-        btnSendMessage.UseVisualStyleBackColor = true;
-        btnSendMessage.Click += btnIniciar_Click;
+        btnIniciarEnvio.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+        btnIniciarEnvio.Cursor = Cursors.Hand;
+        btnIniciarEnvio.Image = (Image)resources.GetObject("btnIniciarEnvio.Image");
+        btnIniciarEnvio.Location = new Point(351, 677);
+        btnIniciarEnvio.Margin = new Padding(3, 4, 3, 4);
+        btnIniciarEnvio.Name = "btnIniciarEnvio";
+        btnIniciarEnvio.Size = new Size(127, 35);
+        btnIniciarEnvio.TabIndex = 2;
+        btnIniciarEnvio.Text = "Iniciar Envio";
+        btnIniciarEnvio.TextAlign = ContentAlignment.MiddleRight;
+        btnIniciarEnvio.TextImageRelation = TextImageRelation.ImageBeforeText;
+        btnIniciarEnvio.UseVisualStyleBackColor = true;
+        btnIniciarEnvio.Click += btnIniciarEnvio_Click;
         // 
-        // btnStopMessage
+        // btnPararEnvio
         // 
-        btnStopMessage.Cursor = Cursors.Hand;
-        btnStopMessage.Image = (Image)resources.GetObject("btnStopMessage.Image");
-        btnStopMessage.Location = new Point(603, 508);
-        btnStopMessage.Name = "btnStopMessage";
-        btnStopMessage.Size = new Size(111, 26);
-        btnStopMessage.TabIndex = 3;
-        btnStopMessage.Text = "Parar Envio";
-        btnStopMessage.TextAlign = ContentAlignment.MiddleRight;
-        btnStopMessage.TextImageRelation = TextImageRelation.ImageBeforeText;
-        btnStopMessage.UseVisualStyleBackColor = true;
-        btnStopMessage.Click += button2_Click;
+        btnPararEnvio.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+        btnPararEnvio.Cursor = Cursors.Hand;
+        btnPararEnvio.Enabled = false;
+        btnPararEnvio.Image = (Image)resources.GetObject("btnPararEnvio.Image");
+        btnPararEnvio.Location = new Point(689, 677);
+        btnPararEnvio.Margin = new Padding(3, 4, 3, 4);
+        btnPararEnvio.Name = "btnPararEnvio";
+        btnPararEnvio.Size = new Size(127, 35);
+        btnPararEnvio.TabIndex = 3;
+        btnPararEnvio.Text = "Parar Envio";
+        btnPararEnvio.TextAlign = ContentAlignment.MiddleRight;
+        btnPararEnvio.TextImageRelation = TextImageRelation.ImageBeforeText;
+        btnPararEnvio.UseVisualStyleBackColor = true;
+        btnPararEnvio.Click += btnPararEnvio_Click;
         // 
         // EnvioWhatsListForm
         // 
-        AutoScaleDimensions = new SizeF(7F, 15F);
+        AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new Size(1023, 592);
-        Controls.Add(btnStopMessage);
-        Controls.Add(btnSendMessage);
+        ClientSize = new Size(1169, 789);
+        Controls.Add(btnPararEnvio);
+        Controls.Add(btnIniciarEnvio);
         Controls.Add(gbxMessages);
+        Margin = new Padding(3, 4, 3, 4);
         Name = "EnvioWhatsListForm";
         Text = "Envio de Mensagens ";
         Load += EnvioWhatsListForm_Load;
         gbxMessages.ResumeLayout(false);
         gbxMessages.PerformLayout();
-        ((System.ComponentModel.ISupportInitialize)MessageQueueTable).EndInit();
+        ((System.ComponentModel.ISupportInitialize)dgvEnvioWhats).EndInit();
         ResumeLayout(false);
     }
 
     #endregion
 
     private GroupBox gbxMessages;
-    private DataGridView MessageQueueTable;
-    private Label lblCountMessages;
-    private Button btnSendMessage;
-    private Button btnStopMessage;
+    private Label lblCountEnvioWhats;
+    private Button btnIniciarEnvio;
+    private Button btnPararEnvio;
+    private DataGridView dgvEnvioWhats;
 }

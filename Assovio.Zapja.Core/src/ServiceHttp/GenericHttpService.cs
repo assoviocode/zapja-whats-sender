@@ -1,18 +1,20 @@
-﻿using System.Text;
+﻿using System.Configuration;
+using System.Text;
 
-namespace Assovio.Zapja.Core
+namespace Assovio.Zapja.Core.ServiceHttp
 {
     public abstract class GenericHttpService
     {
 
-        protected HttpClient _client;
+        protected HttpClient _client = new HttpClient();
 
         protected string _token;
 
         public GenericHttpService()
         {
-            this._client = new HttpClient();
-            this._client.Timeout = TimeSpan.FromMinutes(10);
+            string uri = ConfigurationManager.AppSettings["ConnectionAPI"]!;
+            _client.BaseAddress = new Uri(uri);
+            _client.Timeout = TimeSpan.FromMinutes(10);
         }
 
 
@@ -21,12 +23,12 @@ namespace Assovio.Zapja.Core
             try
             {
 
-                if (!this._client.DefaultRequestHeaders.Contains("Authorization") && !String.IsNullOrEmpty(this._token))
+                if (!_client.DefaultRequestHeaders.Contains("Authorization") && !string.IsNullOrEmpty(_token))
                 {
-                    this._client.DefaultRequestHeaders.Add("Authorization", "Bearer " + this._token);
+                    _client.DefaultRequestHeaders.Add("Authorization", "Bearer " + _token);
                 }
 
-                return this._token;
+                return _token;
 
             }
             catch (Exception ex)
@@ -42,7 +44,7 @@ namespace Assovio.Zapja.Core
 
                 await GetToken();
 
-                string response = await this._client.GetStringAsync(resource);
+                string response = await _client.GetStringAsync(resource);
 
                 if (response != null && !response.Equals("[]"))
                 {
@@ -65,7 +67,7 @@ namespace Assovio.Zapja.Core
             try
             {
                 await GetToken();
-                return await this._client.GetStringAsync(resource);
+                return await _client.GetStringAsync(resource);
             }
             catch (HttpRequestException hre)
             {
@@ -87,7 +89,7 @@ namespace Assovio.Zapja.Core
 
                 await GetToken();
 
-                HttpResponseMessage result = await this._client.PostAsync(resource, dataJson);
+                HttpResponseMessage result = await _client.PostAsync(resource, dataJson);
                 var response = "";
                 if (result.IsSuccessStatusCode)
                 {
@@ -115,7 +117,7 @@ namespace Assovio.Zapja.Core
 
                 await GetToken();
 
-                HttpResponseMessage result = await this._client.PutAsync(resource, dataJson);
+                HttpResponseMessage result = await _client.PutAsync(resource, dataJson);
                 var response = "";
                 if (result.IsSuccessStatusCode)
                 {
@@ -141,7 +143,7 @@ namespace Assovio.Zapja.Core
             {
                 await GetToken();
 
-                HttpResponseMessage result = await this._client.DeleteAsync(resource);
+                HttpResponseMessage result = await _client.DeleteAsync(resource);
                 var response = "";
                 if (result.IsSuccessStatusCode)
                 {

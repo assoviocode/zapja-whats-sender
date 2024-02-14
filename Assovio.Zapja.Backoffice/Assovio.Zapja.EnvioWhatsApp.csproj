@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Assovio.Zapja.Core\Assovio.Zapja.Core.csproj" />
+    <ProjectReference Include="..\Assovio.Zapja.WhatsApp\Assovio.Zapja.WhatsApp.csproj" />
   </ItemGroup>
 
   <ItemGroup>

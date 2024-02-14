@@ -11,4 +11,10 @@
     <ProjectReference Include="..\Assovio.Zapja.Core\Assovio.Zapja.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="App.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
