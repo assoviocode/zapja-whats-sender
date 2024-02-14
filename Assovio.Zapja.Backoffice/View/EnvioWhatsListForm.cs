@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Assovio.Zapja.Backoffice.View
+namespace EnvioWhatsApp.View
 {
-    public partial class PrincipalForm : Form
+    public partial class EnvioWhatsListForm : Form
     {
-        public PrincipalForm()
+        public EnvioWhatsListForm()
         {
             InitializeComponent();
         }

@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34408.163
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assovio.Zapja.WhatsApp", "Assovio.Zapja.WhatsApp\Assovio.Zapja.WhatsApp.csproj", "{C8A8E3A5-54C5-4E4A-AE3C-0123BA56AAF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assovio.Zapja.WhatsApp", "Assovio.Zapja.WhatsApp\Assovio.Zapja.WhatsApp.csproj", "{C8A8E3A5-54C5-4E4A-AE3C-0123BA56AAF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assovio.Zapja.Core", "Assovio.Zapja.Core\Assovio.Zapja.Core.csproj", "{5D5C442D-A4E1-44F3-83F5-5CE7D49BFBA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assovio.Zapja.Core", "Assovio.Zapja.Core\Assovio.Zapja.Core.csproj", "{5D5C442D-A4E1-44F3-83F5-5CE7D49BFBA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assovio.Zapja.Backoffice", "Assovio.Zapja.Backoffice\Assovio.Zapja.Backoffice.csproj", "{BA36EF2F-2267-4AF9-9D3F-B66FD8A7FA27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assovio.Zapja.EnvioWhatsApp", "Assovio.Zapja.Backoffice\Assovio.Zapja.EnvioWhatsApp.csproj", "{BA36EF2F-2267-4AF9-9D3F-B66FD8A7FA27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,5 +1,4 @@
-﻿namespace Assovio.Zapja.Backoffice.View.Operacional
-{
+﻿namespace EnvioWhatsApp.View;
     partial class EnvioWhatsListForm
     {
         /// <summary>
@@ -36,4 +35,3 @@
 
         #endregion
     }
-}
