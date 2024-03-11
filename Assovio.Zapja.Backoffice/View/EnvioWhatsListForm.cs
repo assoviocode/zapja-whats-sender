@@ -45,6 +45,7 @@ namespace EnvioWhatsApp.View
                 MessageBox.Show("Não há protocolos disponíveis para edição!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
+            await this.IniciarBot();
 
         }
 
@@ -177,29 +178,28 @@ namespace EnvioWhatsApp.View
             this.btnIniciarEnvio.Enabled = false;
             this.btnPararEnvio.Enabled = true;
 
-            this._whatsAppSender = new WhatsAppSender();
+            //this._whatsAppSender = new WhatsAppSender();
 
-            while (true)
-            {
+            //while (true)
+            //{
 
-                EnvioWhatsDTO? envioWhatsDTO = await this._envioWhatsHttpService.ShowProximo();
+            //    EnvioWhatsDTO? envioWhatsDTO = await this._envioWhatsHttpService.ShowProximo();
 
-                if (envioWhatsDTO != null)
-                {
-                    this.AtualizarEnvioEmAndamento(envioWhatsDTO);
+            //    if (envioWhatsDTO != null)
+            //    {
+            //        this.AtualizarEnvioEmAndamento(envioWhatsDTO);
 
-                    await this._whatsAppSender.Send(envioWhatsDTO);
+            //        await this._whatsAppSender.Send(envioWhatsDTO);
 
-                    this._envioWhatsSimpleList = this._envioWhatsSimpleList?.Where(ew => ew.Id != envioWhatsDTO.Id).ToList();
+            //        this._envioWhatsSimpleList = this._envioWhatsSimpleList?.Where(ew => ew.Id != envioWhatsDTO.Id).ToList();
 
-                    this.AtualizaItensTabela(this._envioWhatsSimpleList);
-                }
-                else
-                {
-                    //Thread.Sleep(1000);
-                    break;
-                }
-            }
+            //        this.AtualizaItensTabela(this._envioWhatsSimpleList);
+            //    }
+            //    else
+            //    {
+            //        Thread.Sleep(1000);
+            //    }
+            //}
 
             this.btnPararEnvio.Enabled = false;
             this.btnIniciarEnvio.Enabled = true;
@@ -233,6 +233,32 @@ namespace EnvioWhatsApp.View
             this.btnPararEnvio.Enabled = false;
 
             this._whatsAppSender.StopMessages();
+        }
+
+        private async Task IniciarBot()
+        {
+            this._whatsAppSender = new WhatsAppSender();
+
+            while (true)
+            {
+
+                EnvioWhatsDTO? envioWhatsDTO = await this._envioWhatsHttpService.ShowProximo();
+
+                if (envioWhatsDTO != null)
+                {
+                    this.AtualizarEnvioEmAndamento(envioWhatsDTO);
+
+                    await this._whatsAppSender.Send(envioWhatsDTO);
+
+                    this._envioWhatsSimpleList = this._envioWhatsSimpleList?.Where(ew => ew.Id != envioWhatsDTO.Id).ToList();
+
+                    this.AtualizaItensTabela(this._envioWhatsSimpleList);
+                }
+                else
+                {
+                    Thread.Sleep(1000);
+                }
+            }
         }
     }
 }

@@ -84,7 +84,7 @@ namespace Assovio.Zapja.Core.ServiceHttp
                 if (hre.StatusCode.Equals(HttpStatusCode.NotFound))
                 {
                     Console.WriteLine("Nenhum envio na fila! Nova tentativa em 60s...");
-                    Thread.Sleep(1000 * 60);
+                    Thread.Sleep(1000 * 10);
                     return null;
                 }
             }

@@ -1,4 +1,5 @@
-﻿using Assovio.Zapja.Core;
+﻿using Assovio.Selenium;
+using Assovio.Zapja.Core;
 using Assovio.Zapja.Core.DTO;
 using Assovio.Zapja.Core.ServiceHttp;
 using Assovio.Zapja.WhatsApp.Exceptions;
@@ -10,11 +11,13 @@ namespace Assovio.Zapja.WhatsApp
     public class WhatsAppSender : WhatsAppSeleniumBot
     {
         private EnvioWhatsHttpService _envioWhatsHttpService;
+        private ClienteHttpService _clienteHttpService;
         private Random _random = new Random();
 
         public WhatsAppSender()
         {
             this._envioWhatsHttpService = new EnvioWhatsHttpService();
+            this._clienteHttpService = new ClienteHttpService();
 
             this.CreateChromeDriver();
         }
@@ -27,10 +30,25 @@ namespace Assovio.Zapja.WhatsApp
 
             this.Aguardar(5);
 
+            string stringXpathQrCode = "//canvas[@aria-label='Scan me!']";
+
+            ClienteDTO clienteDTO = new ClienteDTO();
+            clienteDTO.Id = 1;
+
+            if (this._driver.PageSource.Contains("Use o WhatsApp no seu computador"))
+            {
+                ////EXCLUIR -> SOMENTE PARA TESTE
+                clienteDTO.QrCodeWhats = this.TakeElementScreenshot(stringXpathQrCode, EnumKeyType.X_PATH);
+
+                await this._clienteHttpService.UploadQrCodeWhats(clienteDTO);
+            }
+
             while (this._driver.PageSource.Contains("Use o WhatsApp no seu computador"))
             {
                 this.Aguardar(5);
             }
+
+            await this._clienteHttpService.UpdateQrCodeValido(clienteDTO);
 
             this.Aguardar(20);
 
@@ -71,8 +89,6 @@ namespace Assovio.Zapja.WhatsApp
 
                 this.ClickOnButton("//button[@aria-label='Enviar']", Selenium.EnumKeyType.X_PATH);
             }
-
-
         }
 
         private void SendFile(string? pathImage)
@@ -90,6 +106,15 @@ namespace Assovio.Zapja.WhatsApp
         public void StopMessages()
         {
             this.CloseDriver();
+        }
+
+        public byte[] TakeElementScreenshot(string key, EnumKeyType keyType = EnumKeyType.X_PATH)
+        {
+            IWebElement element = this.GetElement(key, keyType);
+
+            Screenshot screenshot = ((ITakesScreenshot)this._driver).GetScreenshot();
+
+            return screenshot.AsByteArray;
         }
 
     }

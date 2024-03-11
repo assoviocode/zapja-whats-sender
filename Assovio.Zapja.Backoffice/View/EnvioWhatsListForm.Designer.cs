@@ -90,7 +90,6 @@
         // 
         // btnIniciarEnvio
         // 
-        btnIniciarEnvio.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
         btnIniciarEnvio.Cursor = Cursors.Hand;
         btnIniciarEnvio.Image = (Image)resources.GetObject("btnIniciarEnvio.Image");
         btnIniciarEnvio.Location = new Point(351, 677);
@@ -106,7 +105,6 @@
         // 
         // btnPararEnvio
         // 
-        btnPararEnvio.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
         btnPararEnvio.Cursor = Cursors.Hand;
         btnPararEnvio.Enabled = false;
         btnPararEnvio.Image = (Image)resources.GetObject("btnPararEnvio.Image");
